@@ -1,1 +1,17 @@
-<h1>Hello, {{ who }}!</h1>
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+{% bootstrap_css %}
+
+{% block content %}
+    <div class="container mt-4">
+      <a href="/articles/">Пользователи</a>
+      <a href="/entrance/">Вход</a>
+      <a href="/registration/">Регистрация</a>
+      <button type="submit" class="btn btn-success">Узнать больше</button>
+    </div>
+{% endblock content %}
+
+{% block message %}
+<p class="lead">Практические курсы по программированию</p>
+{% endblock message %}
