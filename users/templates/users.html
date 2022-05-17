@@ -1,1 +1,11 @@
-<h1>Hello, users!</h1>
+{# users/templates/users.html #}
+
+{% load i18n %}
+{% load render_table from django_tables2 %}
+{% load bootstrap4 %}
+
+{% block content %}
+    <div class="container mt-4">
+        {% render_table table %}
+    </div>
+{% endblock content %}
