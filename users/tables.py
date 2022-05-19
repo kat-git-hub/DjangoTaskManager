@@ -1,14 +1,9 @@
 import django_tables2 as tables
 from users.models import User
 from django.utils.translation import gettext as _
-#from django.utils.translation import gettext_lazy as _
 
 
 class UserTable(tables.Table):
-    # T1     = '<a href="###">Edit</a>'
-    # T2     = '<a href="писать сюда ссылку">Delete</a>'
-    # edit = tables.TemplateColumn(T1)
-    # delete = tables.TemplateColumn(T2)
     TEMPLATE = '''
    <a href="##" class="tbl_icon edit">{{ edit }}</a>
    <a href="##" class="tbl_icon delete">{{ delete }}</a>

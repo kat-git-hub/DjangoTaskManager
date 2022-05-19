@@ -32,3 +32,26 @@ msgstr "Изменить"
 #: users/tables.py:18
 msgid "Delete"
 msgstr "Удалить"
+
+##: templates/index.html:14
+msgid "Practical courses of programming."
+msgstr "Практические курсы программирования"
+
+##: templates/index.html:14
+msgid "Hello!"
+msgstr "Привет!"
+
+msgid "Learn more"
+msgstr "Узнать больше"
+
+msgid "Task manager"
+msgstr "Менеджер задач"
+
+msgid "Users"
+msgstr "Пользователи"
+
+msgid "Entrance"
+msgstr "Вход"
+
+msgid "Registration"
+msgstr "Регистрация"

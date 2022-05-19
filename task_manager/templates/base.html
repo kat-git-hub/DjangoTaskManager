@@ -42,27 +42,27 @@
   <body>
     <main class="container">
       <div class="bg-light p-5 rounded mt-3">
-        <h1>Привет от Хекслет!</h1>
+        <h1>{% translate "Hello!" %}</h1>
         {% block message %}  {% endblock message %}
-        <a class="btn btn-lg btn-primary" href="../components/navbar/" role="button">Узнать больше &raquo;</a>
+        <a class="btn btn-lg btn-primary" href="../components/navbar/" role="button">{% translate "Learn more" %} &raquo;</a>
       </div>
     </main>
     <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Task manager</a>
+        <a class="navbar-brand" href="#">{% translate "Task manager" %}</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="/users/">Пользователи</a>
+              <a class="nav-link" href="/users/">{% translate "Users" %}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Вход</a>
+              <a class="nav-link" href="#">{% translate "Entrance" %}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Регистрация</a>
+              <a class="nav-link" href="#">{% translate "Registration" %}</a>
             </li>
           </ul>
         </div>
