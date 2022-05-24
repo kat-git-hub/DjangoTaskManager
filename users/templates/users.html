@@ -1,20 +1,15 @@
 
-
-
+{% extends 'base.html' %}
 {% load i18n %}
 {% load render_table from django_tables2 %}
 {% load bootstrap4 %}
 {% bootstrap_css %}
 
 
-
 {% block content %}
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
-    <div class="container wrapper flex-grow-1">
-        <h1 class="my-4">{% translate "Users"%}</h1>
-            {% render_table table %}
+<div class="container wrapper flex-grow-1">
+    <h1 class="my-4">{% translate "Users"%}</h1> 
+        {% render_table table %}
 
-    </div>
-</nav>
-
+</div>
 {% endblock content %}
