@@ -4,7 +4,10 @@
 {% bootstrap_css %}
   
 {% block content %}  
-  
-Hello!
+<div class="container wrapper flex-grow-1">
+    <h1 class="my-4">{% translate "Registration"%}</h1>
+  {% csrf_token %}
+  {{ form.as_p }}
+</div>
   
 {% endblock content %}  

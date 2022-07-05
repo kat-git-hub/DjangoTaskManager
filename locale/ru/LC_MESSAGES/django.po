@@ -55,3 +55,9 @@ msgstr "Вход"
 
 msgid "Registration"
 msgstr "Регистрация"
+
+msgid "Password"
+msgstr "Пароль"
+
+msgid "Repeat Password"
+msgstr "Подтверждение пароля"

@@ -15,7 +15,7 @@ class CreateUser(generic.CreateView):
     model = User
     template_name = 'create.html'
     form_class = UserForm
-    #fields = ('username', 'password', 'email')
+    #fields = ('first_name', 'last_name', 'username', 'password1', 'password2')
     #success_url = reverse_lazy('login')
 
 
