@@ -16,10 +16,18 @@ class CreateUser(generic.CreateView):
     template_name = 'create.html'
     form_class = UserForm
     #fields = ('first_name', 'last_name', 'username', 'password1', 'password2')
-    #success_url = reverse_lazy('login')
+    success_url = reverse_lazy('users')
 
+# def register(response):
+#     if response.method == "POST":
 
-
+#         form = UserForm(response.POST)
+#         if form.is_valid():
+#             form.save()
+#         return redirect("/users")
+#     else:
+#         form = UserForm()
+#     return render(response, "register/register.html", {"form":form})
 
 
 class CustomUserChangeForm(UserChangeForm):
