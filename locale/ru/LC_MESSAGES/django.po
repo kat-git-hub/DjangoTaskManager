@@ -53,8 +53,14 @@ msgstr "Пользователи"
 msgid "Entrance"
 msgstr "Вход"
 
+msgid "Username"
+msgstr "Имя пользователя"
+
 msgid "Registration"
 msgstr "Регистрация"
+
+msgid "Password"
+msgstr "Пароль"
 
 ##: users/templates/create.html:15
 msgid "Sign up"

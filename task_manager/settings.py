@@ -19,7 +19,6 @@ from dotenv import load_dotenv
 from django.utils.translation import gettext_lazy as _
 
 
-#######SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -52,19 +51,19 @@ INSTALLED_APPS = [
     'django_tables2',
     'bootstrap4',
     'users',
-    
+
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.locale.LocaleMiddleware',#перевод
+    'django.middleware.locale.LocaleMiddleware',  #перевод
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
+
 ]
 
 ROOT_URLCONF = 'task_manager.urls'
@@ -129,7 +128,7 @@ LANGUAGES = [
     ('ru', _('Russian')),
 ]
 
-LOCALE_PATHS = [Path(BASE_DIR)/Path('locale'),]
+LOCALE_PATHS = [Path(BASE_DIR)/Path('locale'), ]
 
 TIME_ZONE = 'UTC'
 
