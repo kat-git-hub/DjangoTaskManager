@@ -3,15 +3,14 @@ from django.shortcuts import render, redirect
 from django.urls.base import reverse_lazy
 #from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django_tables2 import SingleTableView
-#from django.views.generic.edit import CreateView
-#from django.contrib.auth.views import LoginView
-#from django.contrib.messages.views import SuccessMessageMixin
 from users.models import User
 from .tables import UserTable
 from users.forms import UserForm
-from django.views import generic
+from django.views import generic, View
 from django.contrib.auth import login, authenticate, logout
-from users.forms import  AccountAuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib import messages
+
 
 
 class CreateUser(generic.CreateView):
@@ -19,27 +18,10 @@ class CreateUser(generic.CreateView):
     model = User
     template_name = 'create.html'
     form_class = UserForm
-    #success_url = reverse_lazy('login')
+    success_url = reverse_lazy('login')
     # + add success_message
-
-# def register(response):
-#     if response.method == "POST":
-
-#         form = UserForm(response.POST)
-#         if form.is_valid():
-#             form.save()
-#         return redirect("/users")
-#     else:
-#         form = UserForm()
-#     return render(response, "register/register.html", {"form":form})
-
-#------
-# don remember what is this
-#-------
-# class CustomUserChangeForm(UserChangeForm):
-#     class Meta:
-#         model = User
-#         fields = ('username', 'password')
+    #success_message = messages.add_message(request, messages.SUCCESS, "Registration Was Successfull")
+ 
 
 
 class UserView(SingleTableView):
@@ -48,32 +30,57 @@ class UserView(SingleTableView):
     table_class = UserTable
 
 
-def logout_view(request):
-	logout(request)
-	return redirect('/')
+
+class LoginView(View):
+    template_name = 'login.html'
+
+    def get(self, request, *args, **kwargs):
+        form = AuthenticationForm()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request, *args, **kwargs):
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect('home')
+        return render(request, self.template_name, {'form': form})
+
+class LogoutView(View):
+    def get(self, request, *args, **kwargs):
+        logout(request)
+        return redirect('login')
 
 
-def login_view(request):
 
-	context = {}
+# def logout_view(request):
+#     logout(request)
+#     return redirect('/')
 
-	user = request.user
-	if user.is_authenticated: 
-		return redirect("home")
 
-	if request.POST:
-		form = AccountAuthenticationForm(request.POST)
-		if form.is_valid():
-			username = request.POST['username']
-			password = request.POST['password']
-			user = authenticate(username=username, password=password)
+# def login_view(request):
 
-			if user:
-				login(request, user)
-				return redirect("home")
+#     context = {}
 
-	else:
-		form = AccountAuthenticationForm()
+#     user = request.user
+#     if user.is_authenticated: 
+#         return redirect("home")
 
-	context['login_form'] = form
-	return render(request, "login.html", context)
+#     if request.POST:
+#         form = AccountAuthenticationForm(request.POST)
+#         if form.is_valid():
+#             username = request.POST['username']
+#             password = request.POST['password']
+#             user = authenticate(username=username, password=password)
+#             if user:
+#                 login(request, user)
+#                 messages.add_message(request, messages.SUCCESS, "You are login")
+#                 return redirect("/")
+
+#     else:
+#         form = AccountAuthenticationForm()
+
+#     context['login_form'] = form
+    
+#     return render(request, "login.html", context)
+

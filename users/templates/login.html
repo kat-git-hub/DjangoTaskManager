@@ -2,36 +2,20 @@
 {% load bootstrap4 %}
 {% load i18n %}
 {% bootstrap_css %}
+
   
 {% block content %}  
 <div class="container wrapper flex-grow-1">
     <h1 class="my-4">{% translate "Entrance"%}</h1>
+    
         <form method="post" class="form">
-            {% csrf_token %}
-            <div class="form-group"><label for="id_username">{% translate "Username"%}</label><input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" class="form-control" placeholder="Имя пользователя" title="" required="" id="id_username"></div>
+          {% csrf_token %}
+          {% bootstrap_form form %}
           
-
-            <div class="form-group"><label for="id_password">{% translate "Password"%}</label><input type="password" name="password" autocomplete="current-password" class="form-control" placeholder="Пароль" title="" required="" id="id_password"></div>
-
-  {% for field in login_form %}
-      <p>
-        {% for error in field.errors %}
-          <p style="color: red">{{ error }}</p>
-        {% endfor %}
-      </p>
-  {% endfor %}
-  {% if login_form.non_field_errors %}
-    <div style="color: red">
-      <p>{{login_form.non_field_errors}}</p>
-    </div>
-      
-  {% endif %}
-
-            {% buttons %}
-                <button type="submit" class="btn btn-success">
-                {% translate "Entrance" %}
-                </button>
-            {% endbuttons %}
+          {% buttons %}
+          <button type="submit" class="btn btn-success">{% translate "Submit"%}</button>
+          {% endbuttons %}
         </form>
+   
 </div> 
-{% endblock content %} 
+{% endblock content %}

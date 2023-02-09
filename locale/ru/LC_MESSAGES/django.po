@@ -59,6 +59,9 @@ msgstr "Имя пользователя"
 msgid "Registration"
 msgstr "Регистрация"
 
+msgid "Submit"
+msgstr "Подтвердить"
+
 msgid "Password"
 msgstr "Пароль"
 
