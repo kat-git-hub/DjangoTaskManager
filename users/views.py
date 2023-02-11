@@ -43,7 +43,8 @@ class LoginView(View):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect('home')
+            messages.success(request, 'You have successfully logged in.')
+            return redirect('/')
         return render(request, self.template_name, {'form': form})
 
 class LogoutView(View):

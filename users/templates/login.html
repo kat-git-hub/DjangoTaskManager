@@ -6,16 +6,13 @@
   
 {% block content %}  
 <div class="container wrapper flex-grow-1">
-    <h1 class="my-4">{% translate "Entrance"%}</h1>
-    
-        <form method="post" class="form">
-          {% csrf_token %}
-          {% bootstrap_form form %}
-          
+  <h1 class="my-4">{% translate "Entrance"%}</h1>
+    <form method="post" class="form">
+      {% csrf_token %}
+        {% bootstrap_form form %}
           {% buttons %}
-          <button type="submit" class="btn btn-success">{% translate "Submit"%}</button>
+            <button type="submit" class="btn btn-success">{% translate "Submit"%}</button>
           {% endbuttons %}
-        </form>
-   
+    </form> 
 </div> 
 {% endblock content %}
