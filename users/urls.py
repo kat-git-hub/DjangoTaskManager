@@ -6,6 +6,6 @@ from users import views
 app_name = 'users'
 urlpatterns = [
     path('', views.UserView.as_view(template_name='users.html')),
-    path('create/', views.CreateUser.as_view(), name='users/create/'),
+    path('create/', views.CreateUser.as_view(), name='create'),
    
 ]
