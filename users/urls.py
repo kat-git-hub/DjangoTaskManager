@@ -5,7 +5,7 @@ from users import views
 
 app_name = 'users'
 urlpatterns = [
-    path('', views.UserView.as_view(template_name='users.html')),
+    path('', views.UserView.as_view(template_name='users.html'), name='users'),
     path('create/', views.CreateUser.as_view(), name='create'),
    
 ]
