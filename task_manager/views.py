@@ -10,7 +10,7 @@ def index(request):
 
 # class LoginUser(LoginView):
 #     form_class = AuthenticationForm
-#     template_name = 'users/login.html'
+#     template_name = 'users/general_pattern.html'
 #     redirect_field_name = 'redirect_to'
 #     next_page = reverse_lazy('index.html')
 

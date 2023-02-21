@@ -17,7 +17,6 @@ from django.contrib import admin
 from django.urls import path
 from django.urls.conf import include
 from django.views.generic import TemplateView
-# from users.views import login_view, logout_view
 from users import views
 
 

@@ -5,8 +5,8 @@ from django.utils.translation import gettext as _
 
 class UserTable(tables.Table):
     TEMPLATE = '''
-   <a href="##" class="tbl_icon edit">{{ edit }}</a>
-   <a href="##" class="tbl_icon delete">{{ delete }}</a>
+   <a href="{% url 'users:update' record.pk %}" class="tbl_icon edit">{{ edit }}</a>
+   <a href="#" class="tbl_icon delete">{{ delete }}</a>
 '''
     created_at = tables.DateTimeColumn(accessor='date_joined')
     links = tables.TemplateColumn(TEMPLATE, verbose_name='',
