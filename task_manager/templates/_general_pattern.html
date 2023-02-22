@@ -1,12 +1,13 @@
+
 {% extends 'base.html' %}
 {% load bootstrap4 %}
 {% load i18n %}
 {% bootstrap_css %}
 
-  
-{% block content %}  
-<div class="container wrapper flex-grow-1">
+{% block title %}{{ title }}{% endblock %}
 
+{% block content %}
+<div class="container wrapper flex-grow-1">
   <h1 class="my-4">{{ title }}</h1>
     <form method="post" class="form">
       {% csrf_token %}
@@ -16,4 +17,4 @@
           {% endbuttons %}
     </form> 
 </div> 
-{% endblock content %}
+{% endblock %}

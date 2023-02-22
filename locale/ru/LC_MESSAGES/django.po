@@ -65,6 +65,6 @@ msgstr "Подтвердить"
 msgid "Password"
 msgstr "Пароль"
 
-##: users/templates/create.html:15
+##: users/templates/general_pattern.html:15
 msgid "Sign up"
 msgstr "Зарегестрировать"
