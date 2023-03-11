@@ -20,11 +20,7 @@ class CreateUser(generic.CreateView):
     template_name = 'general_pattern.html'
     form_class = UserForm
     success_url = reverse_lazy('login')
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'Registration'
-        return context
+    extra_context = {'title': "Registretion"}
 
     def form_valid(self, form):
         messages.success(self.request, 'User account created successfully.')
@@ -42,21 +38,22 @@ class UpdateUser(LoginRequiredMixin, UpdateView):
     template_name = 'general_pattern.html' 
     form_class = UserForm
     success_url = reverse_lazy('login')
+    extra_context = {'title': "User Change"}
    
     def form_valid(self, form):
         messages.success(self.request, 'User updated.')
         return super().form_valid(form)
 
     
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'User Change'
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['title'] = 'User Change'
+    #     return context
 
 # -------------------------------#####
 class LoginView(View):
     template_name = 'general_pattern.html'
-
+    extra_context = {'title': "Entrance"}
     def get(self, request, *args, **kwargs):
         form = AuthenticationForm()
         return render(request, self.template_name, {'form': form})
@@ -71,11 +68,6 @@ class LoginView(View):
             return redirect('/')
         return render(request, self.template_name, {'form': form})
     
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'Entrance'
-        return context
-    
 
 
 
@@ -83,6 +75,5 @@ class LogoutView(View):
     def get(self, request, *args, **kwargs):
         logout(request)
         return redirect('login')
-
 
 
