@@ -6,6 +6,7 @@ from users.models import User
 from .tables import UserTable
 from users.forms import UserForm
 from django.views import generic, View
+from django.views.generic.edit import DeleteView
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
@@ -20,7 +21,7 @@ class CreateUser(generic.CreateView):
     template_name = 'general_pattern.html'
     form_class = UserForm
     success_url = reverse_lazy('login')
-    extra_context = {'title': "Registretion"}
+    extra_context = {'title': "Registration"}
 
     def form_valid(self, form):
         messages.success(self.request, 'User account created successfully.')
@@ -36,27 +37,23 @@ class UserView(SingleTableView):
 class UpdateUser(LoginRequiredMixin, UpdateView):
     model = User
     template_name = 'general_pattern.html' 
+    extra_context = {'title': "User Change"}
     form_class = UserForm
     success_url = reverse_lazy('login')
-    extra_context = {'title': "User Change"}
+    
    
     def form_valid(self, form):
         messages.success(self.request, 'User updated.')
         return super().form_valid(form)
 
-    
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['title'] = 'User Change'
-    #     return context
 
-# -------------------------------#####
 class LoginView(View):
     template_name = 'general_pattern.html'
     extra_context = {'title': "Entrance"}
     def get(self, request, *args, **kwargs):
         form = AuthenticationForm()
-        return render(request, self.template_name, {'form': form})
+        return render(request, self.template_name, {'form': form, **self.extra_context})
+
 
 
     def post(self, request, *args, **kwargs):
@@ -69,11 +66,28 @@ class LoginView(View):
         return render(request, self.template_name, {'form': form})
     
 
-
-
 class LogoutView(View):
     def get(self, request, *args, **kwargs):
         logout(request)
+        messages.info(request, 'You are logged out.')
         return redirect('login')
 
 
+class DeleteUser(LoginRequiredMixin, DeleteView):
+    model = User
+    template_name = "delete.html"
+    extra_context = {'title': 'Delete user'}
+    success_url = reverse_lazy('users:users') # redirect to /users/
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+
+        # Check if the user is trying to delete their own profile
+        if self.object == request.user:
+            # Call the delete() method to delete the user object
+            return self.delete(request, *args, **kwargs)
+        else:
+            # If the user is trying to delete someone else's profile, return a form error
+            form = self.get_form()
+            form.add_error(None, "You are not allowed to delete other users' profiles.")
+            return self.form_invalid(form)

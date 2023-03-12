@@ -1,1 +1,19 @@
-<h1>Hello, delete!</h1>
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+{% bootstrap_css %}
+
+  
+{% block content %}  
+<div class="container wrapper flex-grow-1">
+
+  <h1 class="my-4">{{ title }}</h1>
+    <form method="post" class="form">
+      {% csrf_token %}
+        {% bootstrap_form form %}
+          {% buttons %}
+            <button type="submit" class="btn btn-success">{% translate "Yes, delete"%}</button>
+          {% endbuttons %}
+    </form> 
+</div> 
+{% endblock content %}
