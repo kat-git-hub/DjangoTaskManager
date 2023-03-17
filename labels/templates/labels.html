@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container wrapper flex-grow-1">
+    <h1 class="my-4">{% translate "Labels"%}</h1> 
+  {% render_table table %}
+</div>
+
+{% endblock %}

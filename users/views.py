@@ -1,18 +1,15 @@
-from django.shortcuts import render, redirect
-from django.urls.base import reverse_lazy
-#from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from django_tables2 import SingleTableView
 from users.models import User
 from .tables import UserTable
 from users.forms import UserForm
-from django.views import generic, View
-from django.views.generic.edit import DeleteView
-from django.contrib.auth import login, logout
-from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
+from django.views import generic, View
+from django.urls.base import reverse_lazy
+from django_tables2 import SingleTableView
+from django.contrib.auth import login, logout
+from django.shortcuts import render, redirect
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic.edit import UpdateView
-
+from django.views.generic.edit import UpdateView, DeleteView
 
 
 class CreateUser(generic.CreateView):

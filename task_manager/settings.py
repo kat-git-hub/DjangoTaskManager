@@ -50,7 +50,10 @@ INSTALLED_APPS = [
     'task_manager',
     'django_tables2',
     'bootstrap4',
+    'statuses',
+    'labels',
     'users',
+    'tasks',
 
 ]
 
