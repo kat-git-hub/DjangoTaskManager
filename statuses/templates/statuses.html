@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load render_table from django_tables2 %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+
+{% block content %}
+
+<div class="container wrapper flex-grow-1">
+    <h1 class="my-4">{% translate title %}</h1>
+        <a class="nav-link" href="{% url 'statuses:create' %}">{% translate 'Create status' %}</a>
+    {% render_table table %}
+</div>
+
+{% endblock %}
