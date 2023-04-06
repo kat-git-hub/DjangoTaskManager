@@ -12,9 +12,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 class LabelsView(SingleTableView):
     model = Labels
-    template_name = 'templates/labels.html'
+    template_name = 'templates/labels-statuses-template.html'
     table_class = LabelsTable
-    extra_context = {'title': "Labels"}
+    extra_context = {'title': "Labels", 'page_type': 'labels'}
 
 
 class CreateLabel(generic.CreateView):

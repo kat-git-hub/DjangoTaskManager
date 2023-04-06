@@ -67,7 +67,7 @@ class LogoutView(View):
     def get(self, request, *args, **kwargs):
         logout(request)
         messages.info(request, 'You are logged out.')
-        return redirect('login')
+        return redirect('/')
 
 
 class DeleteUser(LoginRequiredMixin, DeleteView):

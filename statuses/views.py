@@ -1,4 +1,3 @@
-#from django.shortcuts import render
 from .forms import StatusForm
 from .tables import StatusesTable
 from statuses.models import Status
@@ -10,15 +9,15 @@ from django.views.generic.edit import UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
+
 class StatusesView(SingleTableView):
     model = Status
-    template_name = 'templates/statuses.html'
+    template_name = 'templates/labels-statuses-template.html'
     table_class = StatusesTable
-    extra_context = {'title': "Statuses"}
+    extra_context = {'title': "Statuses", 'page_type': 'statuses'}
 
 
 class CreateStatus(generic.CreateView):
-    #queryset = Labels.objects.all()
     model = Status
     template_name = 'general_pattern.html'
     form_class = StatusForm
