@@ -18,9 +18,10 @@ class StatusesTest(TestCase):
         self.status = Status(name='Test Status')
         self.status.save()
 
+
     def test_status_creation(self):
-        status = Status.objects.create(
-            name='Another Status')
+        status = Status.objects.create(name='Another Status')
+        self.assertTrue(isinstance(status, Status))
         self.assertEqual(status.name, 'Another Status')
 
 
@@ -28,7 +29,7 @@ class StatusesTest(TestCase):
         self.assertEqual(str(self.status), 'Test Status')
 
     
-    def test_update_label(self):
+    def test_update_status(self):
         self.status.name = 'Updated Status'
         self.status.save()
         updated_status = Status.objects.get(pk=self.status.pk)
@@ -39,11 +40,18 @@ class StatusesTest(TestCase):
         self.status.delete()
         self.assertFalse(Status.objects.filter(name='Test Status').exists())
 
-    def test_status_view_logout(self):
-        self.client.logout()
-        response = self.client.get('/logout/')
-        response = self.client.get(reverse('statuses:statuses'))
+
+    def test_user_can_create_status(self):
+        self.client.force_login(self.user)
+        response = self.client.post(reverse('statuses:create'), {'name': 'New Status'})
         self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, '/login/')
+        self.assertTrue(Status.objects.filter(name='New Status').exists())
 
 
+    def test_logout_redirect_to_main_page(self):
+        self.client.force_login(self.user)
+        response = self.client.get(reverse('statuses:statuses'))
+        self.assertEqual(response.status_code, 200)
+        response = self.client.get(reverse('logout'))
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse('main'))

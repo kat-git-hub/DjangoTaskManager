@@ -2,12 +2,12 @@ from users.models import User
 from .tables import UserTable
 from users.forms import UserForm
 from django.contrib import messages
-from django.views import generic, View
+from django.views import generic
 from django.urls.base import reverse_lazy
 from django_tables2 import SingleTableView
-from django.contrib.auth import login, logout
-from django.shortcuts import render, redirect
-from django.contrib.auth.forms import AuthenticationForm
+#from django.contrib.auth import login, logout
+#from django.shortcuts import render, redirect
+#from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import UpdateView, DeleteView
 
@@ -44,30 +44,30 @@ class UpdateUser(LoginRequiredMixin, UpdateView):
         return super().form_valid(form)
 
 
-class LoginView(View):
-    template_name = 'general_pattern.html'
-    extra_context = {'title': "Entrance"}
-    def get(self, request, *args, **kwargs):
-        form = AuthenticationForm()
-        return render(request, self.template_name, {'form': form, **self.extra_context})
+# class LoginView(View):
+#     template_name = 'general_pattern.html'
+#     extra_context = {'title': "Entrance"}
+#     def get(self, request, *args, **kwargs):
+#         form = AuthenticationForm()
+#         return render(request, self.template_name, {'form': form, **self.extra_context})
 
 
 
-    def post(self, request, *args, **kwargs):
-        form = AuthenticationForm(data=request.POST)
-        if form.is_valid():
-            user = form.get_user()
-            login(request, user)
-            messages.success(request, 'You have successfully logged in.')
-            return redirect('/')
-        return render(request, self.template_name, {'form': form})
+#     def post(self, request, *args, **kwargs):
+#         form = AuthenticationForm(data=request.POST)
+#         if form.is_valid():
+#             user = form.get_user()
+#             login(request, user)
+#             messages.success(request, 'You have successfully logged in.')
+#             return redirect('/')
+#         return render(request, self.template_name, {'form': form})
     
 
-class LogoutView(View):
-    def get(self, request, *args, **kwargs):
-        logout(request)
-        messages.info(request, 'You are logged out.')
-        return redirect('/')
+# class LogoutView(View):
+#     def get(self, request, *args, **kwargs):
+#         logout(request)
+#         messages.info(request, 'You are logged out.')
+#         return redirect('/')
 
 
 class DeleteUser(LoginRequiredMixin, DeleteView):
