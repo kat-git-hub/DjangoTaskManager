@@ -9,12 +9,12 @@ class TaskTable(tables.Table):
    <a href="{% url 'tasks:delete' record.pk %}" class="tbl_icon delete">{{ delete }}</a>
 '''
     created_at = tables.DateTimeColumn(accessor='date_joined')
-    # links = tables.TemplateColumn(TEMPLATE, verbose_name='',
-    #                               extra_context={'edit': _('Edit'), 'delete': _('Delete')})
-    author = tables.Column(accessor='full_name', verbose_name=_('Full name'))
+    links = tables.TemplateColumn(TEMPLATE, verbose_name='',
+                                  extra_context={'edit': _('Edit'), 'delete': _('Delete')})
+    author = tables.Column(accessor='full_name', verbose_name=_('author'))
 
 
     class Meta:
         model = Task
         template_name = "django_tables2/bootstrap4.html"
-        fields = ('id', 'username', 'status', 'author', 'created_at')
+        fields = ('id', 'name', 'status', 'author', 'executor', 'created_at', 'links')

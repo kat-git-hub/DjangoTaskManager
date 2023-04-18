@@ -22,7 +22,7 @@ class TaskView(FilterView, SingleTableView):
 class CreateTask(generic.CreateView):
     #queryset = User.objects.all()
     model = Task
-    template_name = 'tasks.html'
+    template_name = 'general_pattern.html'
     form_class = TaskForm
     success_url = reverse_lazy('tasks:tasks')
     extra_context = {'title': "Tasks"}
