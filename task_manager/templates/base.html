@@ -37,6 +37,9 @@
               <a class="nav-link" href="{% url 'labels:labels' %}">{% translate "Labels" %}</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="{% url 'tasks:tasks' %}">{% translate "Tasks" %}</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="{% url 'logout' %}">{% translate 'Logout' %}</a>
             </li>
             {% else %}

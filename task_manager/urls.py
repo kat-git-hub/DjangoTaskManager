@@ -29,6 +29,7 @@ urlpatterns = [
     path('users/', include('users.urls')),
     path('labels/', include('labels.urls')),
     path('statuses/', include('statuses.urls')),
+    path('tasks/', include('tasks.urls')),
     path('login/', views.LoginView.as_view(), name='login'),
     path('logout/', views.LogoutView.as_view(), name='logout'),
 

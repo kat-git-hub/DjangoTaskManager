@@ -32,5 +32,3 @@ class LogoutView(View):
         logout(request)
         messages.info(request, 'You are logged out.')
         return redirect('main')
-
-
