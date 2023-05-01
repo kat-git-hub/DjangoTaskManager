@@ -8,10 +8,9 @@ class TaskTable(tables.Table):
    <a href="{% url 'tasks:update' record.pk %}" class="tbl_icon edit">{{ edit }}</a>
    <a href="{% url 'tasks:delete' record.pk %}" class="tbl_icon delete">{{ delete }}</a>
 '''
-    created_at = tables.DateTimeColumn(accessor='date_joined')
+
     links = tables.TemplateColumn(TEMPLATE, verbose_name='',
                                   extra_context={'edit': _('Edit'), 'delete': _('Delete')})
-    author = tables.Column(accessor='full_name', verbose_name=_('author'))
 
 
     class Meta:

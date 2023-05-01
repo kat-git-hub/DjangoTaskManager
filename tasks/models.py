@@ -1,6 +1,7 @@
 from django.db import models
 from users.models import User
 from statuses.models import Status
+from labels.models import   Labels
 from django.utils.translation import gettext as _
 
 
@@ -19,7 +20,15 @@ class Task(models.Model):
         on_delete=models.PROTECT,
         related_name='tasks_assigned_to',
         verbose_name=_('Executor'),)
+    labels = models.ManyToManyField(
+        Labels,
+        blank=True,
+        verbose_name=_('Labels'),)
 
 
     def __str__(self):
         return self.name
+
+# class TaskLabels(models.Model):
+#     tasks = models.ForeignKey(Task, on_delete=models.CASCADE)
+#     labels = models.ForeignKey(Labels, on_delete=models.PROTECT)
