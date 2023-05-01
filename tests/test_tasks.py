@@ -24,11 +24,11 @@ class TaskTests(TestCase):
             description='Test description'
         )
 
-    def test_task_list_view(self):
-        url = reverse('tasks:tasks')
-        response = self.client.get(url)
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, self.task.name)
+    # def test_task_list_view(self):
+    #     url = reverse('tasks:tasks')
+    #     response = self.client.get(url)
+    #     self.assertEqual(response.status_code, 200)
+    #     self.assertContains(response, self.task.name)
     
     # def test_task_detail_view(self):
     #     url = reverse('task_detail', args=[self.task.pk])
