@@ -11,6 +11,7 @@ class TaskTable(tables.Table):
 
     links = tables.TemplateColumn(TEMPLATE, verbose_name='',
                                   extra_context={'edit': _('Edit'), 'delete': _('Delete')})
+    name = tables.TemplateColumn('<a href="{% url "tasks:view_task" record.pk %}">{{ record.name }}</a>')
 
 
     class Meta:

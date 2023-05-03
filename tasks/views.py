@@ -2,23 +2,31 @@ from tasks.models import Task
 from tasks.forms import TaskForm
 from tasks.tables import TaskTable
 from tasks.filter import TaskFilter
-from django.views import generic
+#from django.views import generic
 from django.contrib import messages
 from django.urls.base import reverse_lazy
 from django_tables2 import SingleTableView
 from django_filters.views import FilterView
+from django.views.generic import DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import UpdateView, DeleteView
 
 
-class TaskView(FilterView, SingleTableView):
+class TasksView(LoginRequiredMixin,FilterView, SingleTableView):
     model = Task
     #template_name = 'templates/tasks.html'
     filterset_class = TaskFilter
     table_class = TaskTable
 
 
-class CreateTask(generic.CreateView):
+class TaskDetailView(LoginRequiredMixin, DetailView):
+    model = Task
+    template_name = 'templates/task_view.html'
+    #form_class = TaskForm
+    extra_context = {'title': "Task View"}
+
+
+class CreateTask(LoginRequiredMixin,CreateView):
     #queryset = User.objects.all()
     model = Task
     template_name = 'general_pattern.html'

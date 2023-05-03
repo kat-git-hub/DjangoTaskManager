@@ -10,14 +10,14 @@ from django.views.generic.edit import UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class LabelsView(SingleTableView):
+class LabelsView(LoginRequiredMixin, SingleTableView):
     model = Labels
     template_name = 'templates/labels-statuses-template.html'
     table_class = LabelsTable
     extra_context = {'title': "Labels", 'page_type': 'labels'}
 
 
-class CreateLabel(generic.CreateView):
+class CreateLabel(LoginRequiredMixin, generic.CreateView):
     #queryset = Labels.objects.all()
     model = Labels
     template_name = 'general_pattern.html'

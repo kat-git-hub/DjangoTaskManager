@@ -10,14 +10,14 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 
-class StatusesView(SingleTableView):
+class StatusesView(LoginRequiredMixin, SingleTableView):
     model = Status
     template_name = 'templates/labels-statuses-template.html'
     table_class = StatusesTable
     extra_context = {'title': "Statuses", 'page_type': 'statuses'}
 
 
-class CreateStatus(generic.CreateView):
+class CreateStatus(LoginRequiredMixin, generic.CreateView):
     model = Status
     template_name = 'general_pattern.html'
     form_class = StatusForm
