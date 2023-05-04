@@ -5,9 +5,6 @@ from django.contrib import messages
 from django.views import generic
 from django.urls.base import reverse_lazy
 from django_tables2 import SingleTableView
-#from django.contrib.auth import login, logout
-#from django.shortcuts import render, redirect
-#from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import UpdateView, DeleteView
 
@@ -48,17 +45,14 @@ class DeleteUser(LoginRequiredMixin, DeleteView):
     model = User
     template_name = "delete.html"
     extra_context = {'title': 'Delete user'}
-    success_url = reverse_lazy('users:users') # redirect to /users/
+    success_url = reverse_lazy('users:users')
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
 
-        # Check if the user is trying to delete their own profile
         if self.object == request.user:
-            # Call the delete() method to delete the user object
             return self.delete(request, *args, **kwargs)
         else:
-            # If the user is trying to delete someone else's profile, return a form error
             form = self.get_form()
             form.add_error(None, "You are not allowed to delete other users' profiles.")
             return self.form_invalid(form)

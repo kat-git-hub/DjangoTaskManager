@@ -6,13 +6,29 @@
 
   
 {% block content %}
+
 <div class="container wrapper flex-grow-1">
     <h1 class="my-4">{% translate title %}</h1>
+    <a class="nav-link" href="{% url 'tasks:create' %}">{% translate 'Create Task' %}</a>
+    
     <div class="card mb-3">
         <div class="card-body bg-light">
+            <form  class="form-inline center" method="get">
+                {% csrf_token %}
+                {{ filter.form.as_p }}
+                <button type="submit">Filter</button>
+            </form>
+            
+            {% for task in filter.qs %}
+                <div>{{ task.title }}</div>
+            {% empty %}
+                <div>No tasks found.</div>
+            {% endfor %}
+            
+            </form>
         </div>
     </div>     
-            <a class="nav-link" href="{% url 'tasks:create' %}">{% translate 'Create Task' %}</a>
+            
     {% render_table table %}
 </div>
 {% endblock content %}

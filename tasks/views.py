@@ -2,7 +2,6 @@ from tasks.models import Task
 from tasks.forms import TaskForm
 from tasks.tables import TaskTable
 from tasks.filter import TaskFilter
-#from django.views import generic
 from django.contrib import messages
 from django.urls.base import reverse_lazy
 from django_tables2 import SingleTableView
@@ -14,20 +13,18 @@ from django.views.generic.edit import UpdateView, DeleteView
 
 class TasksView(LoginRequiredMixin,FilterView, SingleTableView):
     model = Task
-    #template_name = 'templates/tasks.html'
     filterset_class = TaskFilter
     table_class = TaskTable
+    extra_context = {'title': "Tasks"}
 
 
 class TaskDetailView(LoginRequiredMixin, DetailView):
     model = Task
-    template_name = 'templates/task_view.html'
-    #form_class = TaskForm
+    template_name = 'task_view.html'
     extra_context = {'title': "Task View"}
 
 
 class CreateTask(LoginRequiredMixin,CreateView):
-    #queryset = User.objects.all()
     model = Task
     template_name = 'general_pattern.html'
     form_class = TaskForm
@@ -59,15 +56,14 @@ class DeleteTask(LoginRequiredMixin, DeleteView):
     extra_context = {'title': 'Delete task'}
     success_url = reverse_lazy('tasks:tasks')
 
-    def post(self, request, *args, **kwargs):
-        self.object = self.get_object()
+    def form_valid(self, form):
 
         # Check if the user is trying to delete their own profile
         if self.request.user == self.get_object().author:
             # Call the delete() method to delete the user object
-            return self.delete(request, *args, **kwargs)
+            messages.success(self.request, 'Task deleted successfully.')
+            return super().form_valid(form)
         else:
             # If the user is trying to delete someone else's profile, return a form error
-            form = self.get_form()
-            form.add_error(None, "Task can delete only owner.")
+            form.add_error(None, "Task can be deleted only by the owner.")
             return self.form_invalid(form)

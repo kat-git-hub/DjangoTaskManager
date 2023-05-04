@@ -1,12 +1,13 @@
-import django_filters as filters
 from .models import Task
 from labels.models import Labels
+import django_filters as filters
+from django.forms.widgets import CheckboxInput
 
 
 class TaskFilter(filters.FilterSet):
     
-    show_my_tasks = filters.BooleanFilter(field_name='author', label = 'My tasks',
-                                         method = 'filter_tasks')
+    show_my_tasks = filters.BooleanFilter(field_name ='author', label = 'My tasks',
+                                         method = 'filter_tasks', widget=CheckboxInput)
     labels = filters.ModelChoiceFilter(queryset=Labels.objects.all(), label='Label')
 
 
@@ -26,6 +27,6 @@ class TaskFilter(filters.FilterSet):
         filter_overrides = {
              filters.BooleanFilter: {
                 'filter_class': filters.BooleanFilter,
-                 'extra': lambda f: {'widget': CheckboxInput,},
+                'extra': lambda f: {'widget': CheckboxInput,},
              },
          }

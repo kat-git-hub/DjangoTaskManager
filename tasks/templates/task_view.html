@@ -9,7 +9,7 @@
     <h1 class="my-4">{% translate title %}</h1>
     <div class="card">
         <div class="card-header bg-secondary text-white">
-            <h2>{{ task.name }}</h2>>
+            <h2>{{ task.name }}</h2>
         </div>
 
         <div class="card-body bg-light">
@@ -43,9 +43,9 @@
                 </div>
                 <div class="row p-1">
                     <div class="col">
-                      <a href="{% url 'tasks:update_task' task.pk %}">{% translate 'Edit' %}</a>
+                      <a href="{% url 'tasks:update' task.pk %}">{% translate 'Edit' %}</a>
                       <br>
-                      <a href="{% url 'tasks:delete_task' task.pk %}">{% translate 'Delete' %}</a>
+                      <a href="{% url 'tasks:delete' task.pk %}">{% translate 'Delete' %}</a>
                     </div>
                 </div>
             </div>
