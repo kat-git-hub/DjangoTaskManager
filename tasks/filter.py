@@ -11,13 +11,9 @@ class TaskFilter(filters.FilterSet):
     labels = filters.ModelChoiceFilter(queryset=Labels.objects.all(), label='Label')
 
 
-    def filter_tasks(queryset, name, value):
-        if value:
-            user = queryset.model._meta.model_name.author_model().objects.filter(username=value).first()
-            if user:
-                return queryset.filter(author=user)
-            else:
-                return queryset.none()
+    def filter_tasks(self, queryset, name, value):
+        if value and self.request.user.is_authenticated:
+            return queryset.filter(author=self.request.user)
         return queryset
 
 

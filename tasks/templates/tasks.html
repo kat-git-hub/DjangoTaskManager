@@ -13,21 +13,22 @@
     
     <div class="card mb-3">
         <div class="card-body bg-light">
-            <form  class="form-inline center" method="get">
+            <form class="form-inline" method="get">
                 {% csrf_token %}
-                {{ filter.form.as_p }}
-                <button type="submit">Filter</button>
-            </form>
-            
-            {% for task in filter.qs %}
-                <div>{{ task.title }}</div>
-            {% empty %}
-                <div>No tasks found.</div>
-            {% endfor %}
-            
+                {% for field in filter.form %}
+                    {% bootstrap_field field field_class='ml-2 mr-3'%}
+                {% endfor %}
+                <button type="submit" class="btn btn-primary ml-3">{% translate "Filter" %}</button>
             </form>
         </div>
     </div>     
+            
+    {% for task in filter.qs %}
+        <div>{{ task.title }}</div>
+    {% empty %}
+        <div> No tasks found. </div>
+        <hr>
+    {% endfor %}
             
     {% render_table table %}
 </div>
