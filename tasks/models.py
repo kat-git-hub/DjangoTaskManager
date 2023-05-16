@@ -1,13 +1,13 @@
 from django.db import models
 from users.models import User
 from statuses.models import Status
-from labels.models import   Labels
+from labels.models import Labels
 from django.utils.translation import gettext as _
 
 
 class Task(models.Model):
-    name = models.CharField(max_length=100, verbose_name='Name')
-    status =  models.ForeignKey(Status, null=True, on_delete=models.PROTECT)
+    name = models.CharField(max_length=100, verbose_name=_('Name'))
+    status = models.ForeignKey(Status, null=True, on_delete=models.PROTECT)
     created_at = models.DateTimeField(auto_now_add=True)
     description = models.TextField(blank=True, null=True)
     author = models.ForeignKey(
@@ -25,10 +25,5 @@ class Task(models.Model):
         blank=True,
         verbose_name=_('Labels'),)
 
-
     def __str__(self):
         return self.name
-
-# class TaskLabels(models.Model):
-#     tasks = models.ForeignKey(Task, on_delete=models.CASCADE)
-#     labels = models.ForeignKey(Labels, on_delete=models.PROTECT)

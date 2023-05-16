@@ -10,18 +10,18 @@ class TaskTests(TestCase):
 
     def setUp(self):
         self.user1 = User.objects.create_user(
-            username='testuser1', 
+            username='testuser1',
             password='testpass123')
         self.user2 = User.objects.create_user(
-            username='testuser2', 
+            username='testuser2',
             password='testpass123')
         self.status = Status.objects.create(name='New')
         self.label = Labels.objects.create(name='Important')
         self.task = Task.objects.create(
-            name='Test Task', 
-            status=self.status, 
-            author=self.user1, 
-            executor=self.user2, 
+            name='Test Task',
+            status=self.status,
+            author=self.user1,
+            executor=self.user2,
             description='Test description'
         )
 
@@ -32,7 +32,6 @@ class TaskTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, self.task.name)
 
-
     def test_task_detail_view(self):
         self.client.login(username='testuser1', password='testpass123')
         url = reverse('tasks:view_task', kwargs={'pk': self.task.pk})
@@ -40,7 +39,6 @@ class TaskTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, self.task.name)
 
-    
     def test_task_create_view(self):
         self.client.login(username='testuser1', password='testpass123')
         url = reverse('tasks:create')
@@ -53,10 +51,9 @@ class TaskTests(TestCase):
             'labels': [self.label.pk]
         }
         response = self.client.post(url, data, follow=True)
-        self.assertContains(response, 'Task created successfully.')
+        self.assertContains(response, 'Task created successfully')
         self.assertEqual(response.status_code, 200)
         self.assertTrue(Task.objects.filter(name='New Task').exists())
-
 
     def test_task_update_view(self):
         self.client.login(username='testuser1', password='testpass123')
@@ -70,10 +67,9 @@ class TaskTests(TestCase):
             'labels': [self.label.pk]
         }
         response = self.client.post(url, data, follow=True)
-        self.assertContains(response, 'Task updated.')
+        self.assertContains(response, 'Task updated')
         self.task.refresh_from_db()
         self.assertEqual(self.task.name, 'Updated Task')
-
 
     def test_task_delete_view(self):
         self.client.login(username='testuser1', password='testpass123')

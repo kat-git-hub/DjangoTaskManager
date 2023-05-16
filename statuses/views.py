@@ -9,10 +9,9 @@ from django.views.generic.edit import UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-
 class StatusesView(LoginRequiredMixin, SingleTableView):
     model = Status
-    template_name = 'templates/labels-statuses-template.html'
+    template_name = 'templates/labels_statuses.html'
     table_class = StatusesTable
     extra_context = {'title': "Statuses", 'page_type': 'statuses'}
 
@@ -22,7 +21,7 @@ class CreateStatus(LoginRequiredMixin, generic.CreateView):
     template_name = 'general_pattern.html'
     form_class = StatusForm
     success_url = reverse_lazy('statuses:statuses')
-    extra_context = {'title': "Create status",}
+    extra_context = {'title': "Create status", }
 
     def form_valid(self, form):
         messages.success(self.request, 'Status created successfully.')
@@ -31,16 +30,14 @@ class CreateStatus(LoginRequiredMixin, generic.CreateView):
 
 class UpdateStatus(LoginRequiredMixin, UpdateView):
     model = Status
-    template_name = 'general_pattern.html' 
+    template_name = 'general_pattern.html'
     extra_context = {'title': "Status Change"}
     form_class = StatusForm
     success_url = reverse_lazy('statuses:statuses')
-    
-   
+
     def form_valid(self, form):
         messages.success(self.request, 'Status updated.')
         return super().form_valid(form)
-
 
 
 class DeleteStatus(LoginRequiredMixin, DeleteView):

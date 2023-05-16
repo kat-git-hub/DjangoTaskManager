@@ -12,7 +12,6 @@ class StatusesTable(tables.Table):
                                   extra_context={'edit': _('Edit'), 'delete': _('Delete')})
     name = tables.Column(accessor='name', verbose_name=_('Name'))
 
-
     class Meta:
         model = Status
         template_name = "django_tables2/bootstrap4.html"

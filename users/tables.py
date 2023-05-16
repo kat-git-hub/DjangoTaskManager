@@ -13,7 +13,6 @@ class UserTable(tables.Table):
                                   extra_context={'edit': _('Edit'), 'delete': _('Delete')})
     full_name = tables.Column(accessor='full_name', verbose_name=_('Full name'))
 
-
     class Meta:
         model = User
         template_name = "django_tables2/bootstrap4.html"

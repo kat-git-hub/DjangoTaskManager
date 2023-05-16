@@ -68,3 +68,90 @@ msgstr "Пароль"
 ##: users/templates/general_pattern.html:15
 msgid "Sign up"
 msgstr "Зарегестрировать"
+
+msgid "You have successfully logged in"
+msgstr "Вы успешно залогинились"
+
+msgid "You are logged out"
+msgstr "Вы разлогинились"
+
+msgid "Registration"
+msgstr "Регистрация"
+
+msgid "User account created successfully"
+msgstr "Аккаунт успешно создан"
+
+msgid "User Change"
+msgstr "Изменение пользователя"
+
+msgid "User updated"
+msgstr "Пользователь изменен"
+
+msgid "Delete user"
+msgstr "Удаление пользователя"
+
+msgid "You are not allowed to delete other users profiles"
+msgstr "У вас нет прав для удаления чужих профилей"
+
+msgid "Created date"
+msgstr "Дата создания"
+
+msgid "Labels"
+msgstr "Метки"
+
+msgid "Label"
+msgstr "Метка"
+
+msgid "Create label"
+msgstr "Создание метки"
+
+msgid "Label created successfully"
+msgstr "Метка успешно создана"
+
+msgid "Label change"
+msgstr "Изменение метки"
+
+msgid "Label updated"
+msgstr "Метка изменена"
+
+msgid "Delete label"
+msgstr "Удаление метки"
+
+msgid "Label deleted successfully"
+msgstr "Метка успешно удалена"
+
+msgid "Filter"
+msgstr "Отфильтровать"
+
+msgid "My tasks"
+msgstr "Мои задачи"
+
+msgid "Author"
+msgstr "Автор"
+
+msgid "Executor"
+msgstr "Исполнитель"
+
+msgid "Tasks"
+msgstr "Задачи"
+
+msgid "Task view"
+msgstr "Просмотр задачи"
+
+msgid "Task created successfully"
+msgstr "Задача успешно создана"
+
+msgid "Changing task"
+msgstr "Изменение задачи"
+
+msgid "Task updated"
+msgstr "Задача изменена"
+
+msgid "Delete task"
+msgstr "Удаление задачи"
+
+msgid "Task deleted successfully"
+msgstr "Задача удалена"
+
+msgid "Task can be deleted only by the owner"
+msgstr "Задачу может удалить только ее владелец"

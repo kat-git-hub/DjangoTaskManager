@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.views import generic
 from django.urls.base import reverse_lazy
 from django_tables2 import SingleTableView
+from django.utils.translation import gettext as _
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import UpdateView, DeleteView
 
@@ -15,10 +16,10 @@ class CreateUser(generic.CreateView):
     template_name = 'general_pattern.html'
     form_class = UserForm
     success_url = reverse_lazy('login')
-    extra_context = {'title': "Registration"}
+    extra_context = {'title': _('Registration')}
 
     def form_valid(self, form):
-        messages.success(self.request, 'User account created successfully.')
+        messages.success(self.request, _('User account created successfully'))
         return super().form_valid(form)
 
 
@@ -30,21 +31,20 @@ class UserView(SingleTableView):
 
 class UpdateUser(LoginRequiredMixin, UpdateView):
     model = User
-    template_name = 'general_pattern.html' 
-    extra_context = {'title': "User Change"}
+    template_name = 'general_pattern.html'
+    extra_context = {'title': _('User Change')}
     form_class = UserForm
     success_url = reverse_lazy('login')
-    
-   
+
     def form_valid(self, form):
-        messages.success(self.request, 'User updated.')
+        messages.success(self.request, _('User updated'))
         return super().form_valid(form)
 
 
 class DeleteUser(LoginRequiredMixin, DeleteView):
     model = User
     template_name = "delete.html"
-    extra_context = {'title': 'Delete user'}
+    extra_context = {'title': _('Delete user')}
     success_url = reverse_lazy('users:users')
 
     def post(self, request, *args, **kwargs):
@@ -54,5 +54,5 @@ class DeleteUser(LoginRequiredMixin, DeleteView):
             return self.delete(request, *args, **kwargs)
         else:
             form = self.get_form()
-            form.add_error(None, "You are not allowed to delete other users' profiles.")
+            form.add_error(None, _('You are not allowed to delete other users profiles'))
             return self.form_invalid(form)
