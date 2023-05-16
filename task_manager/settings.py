@@ -131,7 +131,7 @@ LANGUAGES = [
     ('ru', _('Russian')),
 ]
 
-LOCALE_PATHS = [Path(BASE_DIR)/Path('locale'), ]
+LOCALE_PATHS = [Path(BASE_DIR) / Path('locale'), ]
 
 TIME_ZONE = 'UTC'
 
