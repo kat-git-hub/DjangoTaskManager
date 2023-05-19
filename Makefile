@@ -8,8 +8,6 @@ lint:
 	poetry run flake8 task_manager
 test:
 	poetry run pytest -vv
-test-coverage:
-	poetry run pytest --cov=task_manager --cov-report xml
 migrate:
 	poetry run python manage.py migrate
 migrations:
