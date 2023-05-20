@@ -13,12 +13,10 @@ python-dotenv = "^0.19.2"
 django-filter = "^23.1"
 django-tables2 = "^2.4.1"
 django-bootstrap4 = "^3.0.1"
-pytest-django = "^4.5.2"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^3.9.2"
 pytest = "^6.2.5"
-pytest-django = "^4.5.2"
 pytest-cov = "^3.0.0"
 coverage = "^7.2.5"
 
