@@ -9,7 +9,7 @@ lint:
 test:
 	poetry run pytest -vv
 test-coverage:
-	poetry run pytest -vv
+	poetry run pytest --cov=task_manager --cov-report xml
 migrate:
 	poetry run python manage.py migrate
 migrations:
