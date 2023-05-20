@@ -5,9 +5,9 @@ from django.utils.translation import gettext as _
 
 class LabelsTable(tables.Table):
     TEMPLATE = '''
-   <a href="{% url 'labels:update' record.pk %}" class="tbl_icon edit">{{ edit }}</a> # noqa: E501
-   <a href="{% url 'labels:delete' record.pk %}" class="tbl_icon delete">{{ delete }}</a> # noqa: E501
-'''
+   <a href="{% url 'labels:update' record.pk %}" class="tbl_icon edit">{{ edit }}</a>
+   <a href="{% url 'labels:delete' record.pk %}" class="tbl_icon delete">{{ delete }}</a>
+''' # noqa: E501
     links = tables.TemplateColumn(TEMPLATE, verbose_name='',
                                   extra_context={'edit': _('Edit'),
                                                  'delete': _('Delete')})

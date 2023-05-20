@@ -1,4 +1,5 @@
 from users.models import User
+from django.urls import reverse
 from labels.models import Labels
 from django.test import TestCase
 
@@ -9,7 +10,7 @@ class LabelsTest(TestCase):
             first_name='test',
             last_name='testoff',
             username='testuser',
-            password='ivan1234'
+            password='testpass123'
         )
         self.user.save()
 
@@ -20,6 +21,11 @@ class LabelsTest(TestCase):
         label = Labels.objects.create(
             name='Another Label')
         self.assertEqual(label.name, 'Another Label')
+    
+    def test_labels_list(self):
+        self.client.login(username='testuser', password='testpass123')
+        response = self.client.get(reverse('labels:labels'))
+        self.assertEqual(response.status_code, 200)
 
     def test_label_str_method(self):
         self.assertEqual(str(self.label), 'Test Label')
