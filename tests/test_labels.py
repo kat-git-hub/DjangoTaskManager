@@ -21,13 +21,10 @@ class LabelsTest(TestCase):
         self.client.login(username='testuser', password='testpass123')
         url = reverse('labels:create')
         data = {'name': 'Another Test Label'}
-        #label = Labels.objects.create(
-        #    name='Another Label')
         response = self.client.post(url, data, follow=True)
         self.assertContains(response, 'Label created successfully')
         self.assertEqual(response.status_code, 200)
-        #self.assertEqual(label.name, 'Another Label')
-    
+
     def test_labels_list(self):
         self.client.login(username='testuser', password='testpass123')
         response = self.client.get(reverse('labels:labels'))
@@ -38,7 +35,7 @@ class LabelsTest(TestCase):
 
     def test_update_label(self):
         self.client.login(username='testuser', password='testpass123')
-        url = reverse('labels:update',  kwargs={'pk': 1})
+        url = reverse('labels:update', kwargs={'pk': 1})
         data = {'name': 'Updated Test Label'}
         response = self.client.post(url, data, follow=True)
         self.assertEqual(response.status_code, 200)

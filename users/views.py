@@ -1,13 +1,15 @@
 from users.models import User
 from .tables import UserTable
 from users.forms import UserForm
-from django.contrib import messages
+from tasks.models import Task
 from django.views import generic
+from django.contrib import messages
 from django.urls.base import reverse_lazy
 from django_tables2 import SingleTableView
 from django.utils.translation import gettext as _
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import UpdateView, DeleteView
+from django.contrib.messages.views import SuccessMessageMixin
 
 
 class CreateUser(generic.CreateView):
@@ -41,7 +43,7 @@ class UpdateUser(LoginRequiredMixin, UpdateView):
         return super().form_valid(form)
 
 
-class DeleteUser(LoginRequiredMixin, DeleteView):
+class DeleteUser(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = User
     template_name = "delete.html"
     extra_context = {'title': _('Delete user')}
@@ -51,8 +53,13 @@ class DeleteUser(LoginRequiredMixin, DeleteView):
         self.object = self.get_object()
 
         if self.object == request.user:
-            return self.delete(request, *args, **kwargs)
+            if Task.objects.filter(author=self.object).exists():
+                messages.error(self.request, _('Unable to delete user account. The account is currently in use.'))
+                return self.form_invalid(None)
+            else:
+                response = super().delete(request, *args, **kwargs)
+                messages.success(self.request, _('User account deleted successfully'))
+                return response
         else:
-            form = self.get_form()
-            form.add_error(None, _('You are not allowed to delete other users profiles'))
-            return self.form_invalid(form)
+            messages.error(self.request, _('You are not allowed to delete other users profiles'))
+            return self.form_invalid(None)

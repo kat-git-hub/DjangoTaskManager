@@ -16,8 +16,9 @@ class TestUsers(TestCase):
             'username': 'newuser',
             'password1': 'newpass123',
             'password2': 'newpass123',
-        })
-        self.assertEqual(response.status_code, 302)
+        }, follow=True)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'User account created successfully')
         self.assertRedirects(response, reverse('login'))
 
     def test_update_user(self):
@@ -30,15 +31,17 @@ class TestUsers(TestCase):
             'password1': 'testpass123',
             'password2': 'testpass123',
         }
-        response = self.client.post(url, data=form_data)
-        self.assertEqual(response.status_code, 302)
+        response = self.client.post(url, data=form_data, follow=True)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'User updated')
         self.assertRedirects(response, reverse('login'))
         self.user.refresh_from_db()
         self.assertEqual(self.user.username, 'testuser2')
 
     def test_delete_user(self):
-        self.client.force_login(self.user)
-        response = self.client.post(reverse('users:delete', args=[self.user.pk]))
+        self.client.login(username='testuser', password='testpass123')
+        url = reverse('users:delete', args=[self.user.pk])
+        response = self.client.post(url)
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse('users:users'))
-        self.assertFalse(User.objects.filter(username=self.user).exists())
+        self.assertFalse(User.objects.filter(username='testuser').exists())
