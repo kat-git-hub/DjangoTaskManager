@@ -17,3 +17,6 @@ class LabelsTable(tables.Table):
         model = Labels
         template_name = "django_tables2/bootstrap4.html"
         fields = ('id', 'name', 'created_at', 'links')
+        attrs = {
+            'class': 'table table-hover'
+        }

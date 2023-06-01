@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.urls.base import reverse_lazy
 from django_tables2 import SingleTableView
 from django.utils.translation import gettext as _
+from task_manager.mixin import CustomAccessMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import UpdateView, DeleteView
 from django.contrib.messages.views import SuccessMessageMixin
@@ -31,7 +32,7 @@ class UserView(SingleTableView):
     table_class = UserTable
 
 
-class UpdateUser(LoginRequiredMixin, UpdateView):
+class UpdateUser(LoginRequiredMixin, CustomAccessMixin, UpdateView):
     model = User
     template_name = 'general_pattern.html'
     extra_context = {'title': _('User Change')}
@@ -43,7 +44,7 @@ class UpdateUser(LoginRequiredMixin, UpdateView):
         return super().form_valid(form)
 
 
-class DeleteUser(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
+class DeleteUser(LoginRequiredMixin, CustomAccessMixin, SuccessMessageMixin, DeleteView):
     model = User
     template_name = "delete.html"
     extra_context = {'title': _('Delete user')}

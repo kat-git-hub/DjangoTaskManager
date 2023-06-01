@@ -3,9 +3,15 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
 from django.contrib.auth import authenticate
 from users.models import User
+from django.utils.translation import gettext as _
 
 
 class UserForm(UserCreationForm):
+    first_name = forms.CharField(label=_('first_name'))
+    last_name = forms.CharField(label=_('last_name'))
+    password1 = forms.CharField(label=_('Password'))
+    password2 = forms.CharField(label=_('Password confirmation'))
+    
 
     class Meta():
         model = get_user_model()
@@ -22,7 +28,7 @@ class AccountAuthenticationForm(forms.ModelForm):
 
     def clean(self):
         if self.is_valid():
-            username = self.username['username']
-            password = self.cleaned_data['password']
+            username = self.username[_('username')]
+            password = self.cleaned_data[_('Password')]
             if not authenticate(user=username, password=password):
                 raise forms.ValidationError("Invalid login")

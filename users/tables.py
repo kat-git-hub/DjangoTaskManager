@@ -8,7 +8,7 @@ class UserTable(tables.Table):
    <a href="{% url 'users:update' record.pk %}" class="tbl_icon edit">{{ edit }}</a>
    <a href="{% url 'users:delete' record.pk %}" class="tbl_icon delete">{{ delete }}</a>
 '''
-    created_at = tables.DateTimeColumn(accessor='date_joined')
+    created_at = tables.DateTimeColumn(accessor='date_joined', verbose_name=_('Date joined'))
     links = tables.TemplateColumn(TEMPLATE, verbose_name='',
                                   extra_context={'edit': _('Edit'), 'delete': _('Delete')})
     full_name = tables.Column(accessor='full_name', verbose_name=_('Full name'))
@@ -17,3 +17,6 @@ class UserTable(tables.Table):
         model = User
         template_name = "django_tables2/bootstrap4.html"
         fields = ('id', 'username', 'full_name', 'created_at', 'links')
+        attrs = {
+            'class': 'table table-hover'
+        }

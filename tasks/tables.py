@@ -19,3 +19,6 @@ class TaskTable(tables.Table):
         model = Task
         template_name = "django_tables2/bootstrap4.html"
         fields = ('id', 'name', 'status', 'author', 'executor', 'created_at', 'links')
+        attrs = {
+            'class': 'table table-hover'
+        }
