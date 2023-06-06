@@ -1,18 +1,12 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import get_user_model
-from django.contrib.auth import authenticate
 from users.models import User
+from django.contrib.auth import authenticate
+from django.contrib.auth import get_user_model
 from django.utils.translation import gettext as _
+from django.contrib.auth.forms import UserCreationForm
 
 
 class UserForm(UserCreationForm):
-
-    # first_name = forms.CharField(label=_('First Name'))
-    # last_name = forms.CharField(label=_('Last Name'))
-    # password1 = forms.CharField(label=_('Password'))
-    # password2 = forms.CharField(label=_('Password confirmation'))
-    
 
     class Meta():
         model = get_user_model()
