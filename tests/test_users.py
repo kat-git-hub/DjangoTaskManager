@@ -25,6 +25,7 @@ class TestUsers(TestCase):
             'password2': 'newpass123',
         }, follow=True)
         self.assertEqual(response.status_code, 200)
+        print(response.content)
         self.assertContains(response, 'User account created successfully')
         self.assertRedirects(response, reverse('login'))
 

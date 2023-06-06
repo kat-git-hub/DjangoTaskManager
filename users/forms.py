@@ -7,10 +7,11 @@ from django.utils.translation import gettext as _
 
 
 class UserForm(UserCreationForm):
-    first_name = forms.CharField(label=_('first_name'))
-    last_name = forms.CharField(label=_('last_name'))
-    password1 = forms.CharField(label=_('Password'))
-    password2 = forms.CharField(label=_('Password confirmation'))
+
+    # first_name = forms.CharField(label=_('First Name'))
+    # last_name = forms.CharField(label=_('Last Name'))
+    # password1 = forms.CharField(label=_('Password'))
+    # password2 = forms.CharField(label=_('Password confirmation'))
     
 
     class Meta():

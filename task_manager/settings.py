@@ -15,7 +15,7 @@ import os
 import dj_database_url
 from pathlib import Path
 from dotenv import load_dotenv
-from django.utils.translation import gettext_lazy as _
+#from django.utils.translation import gettext_lazy as _
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -124,12 +124,13 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'ru'
+LANGUAGE_CODE = 'en'
 
 LANGUAGES = [
-    ('en', _('English')),
-    ('ru', _('Russian')),
+    ('en', 'English'),
+    ('ru', 'Russian'),
 ]
+
 
 LOCALE_PATHS = [Path(BASE_DIR) / Path('locale'), ]
 

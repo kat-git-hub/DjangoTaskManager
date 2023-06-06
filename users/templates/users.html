@@ -2,12 +2,10 @@
 {% load i18n %}
 {% load render_table from django_tables2 %}
 {% load bootstrap4 %}
-{% bootstrap_css %}
-
 
 {% block content %}
 <div class="container wrapper flex-grow-1">
-    <h1 class="my-4">{% translate "Users"%}</h1> 
+    <h1 class="my-4">{% translate 'Users' %}</h1> 
         {% render_table table %}
 
 </div>
