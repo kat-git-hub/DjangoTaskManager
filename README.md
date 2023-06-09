@@ -12,13 +12,13 @@ FEATURES:
 
 
 
-### Tests and linter status
+## Tests and linter status
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/dc8ddc3289858828b1f7/maintainability)](https://codeclimate.com/github/kat-git-hub/python-web-development-project-lvl4/maintainability)  [![Test Coverage](https://api.codeclimate.com/v1/badges/dc8ddc3289858828b1f7/test_coverage)](https://codeclimate.com/github/kat-git-hub/python-web-development-project-lvl4/test_coverage)  [![linter-check](https://github.com/kat-git-hub/python-web-development-project-lvl4/actions/workflows/linter-check.yml/badge.svg)](https://github.com/kat-git-hub/python-web-development-project-lvl4/actions/workflows/linter-check.yml) 
 
 
 
-### What You Will Need
+## What You Will Need
 
 - Python 3.8+ (Python3 and above)
 
@@ -28,7 +28,7 @@ FEATURES:
 
 
 
-### Quick Start Guide
+## Quick Start Guide
 
 Clone the project: `$ git clone git@github.com:kat-git-hub/DjangoTaskManager.git`
 
@@ -50,4 +50,4 @@ To run the local server: `$ poetry run python manage.py runserver`
 Access the application: `http://localhost:8000/`
 
 
-Have fun!
+### Have fun! :tada:
