@@ -55,7 +55,7 @@ You should run first the `makemigrations` task if changes in the models were mad
 
 To run the project using Docker, you can follow these steps:
 
-1. Make sure you have Docker installed on your system. You can download and install Docker from the official website: https://www.docker.com/get-started
+1. Make sure you have [Docker](https://www.docker.com/get-started) installed on your system.
 
 2. Clone the project: `$ git clone git@github.com:kat-git-hub/DjangoTaskManager.git`
 
