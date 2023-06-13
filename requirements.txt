@@ -4,36 +4,28 @@ attrs==23.1.0; python_version >= "3.7"
 beautifulsoup4==4.12.2; python_full_version >= "3.6.0" and python_version >= "3.6"
 colorama==0.4.6; python_version >= "3.6" and python_full_version < "3.0.0" and sys_platform == "win32" or sys_platform == "win32" and python_version >= "3.6" and python_full_version >= "3.7.0"
 dj-database-url==0.5.0 \
-    --hash=sha256:4aeaeb1f573c74835b0686a2b46b85990571159ffc21aa57ecd4d1e1cb334163 \
-    --hash=sha256:851785365761ebe4994a921b433062309eb882fedd318e1b0fcecc607ed02da9
+
 django-bootstrap4==3.0.1; python_version >= "3.6" \
-    --hash=sha256:c5c97fb473bb56e3a91b4f4be52b74a3fc384ec3baae50dd0807fa922a55ec2b \
-    --hash=sha256:aa8a9cb5ab27cfae52a27d377a0401af268d0e4b91a5f8e660546464582cc010
+
 django-filter==23.2; python_version >= "3.7"
 django-tables2==2.5.3
 django==4.2.1; python_version >= "3.8"
 gunicorn==20.1.0; python_version >= "3.5" \
-    --hash=sha256:9dcc4547dbb1cb284accfb15ab5667a0e5d1881cc443e0677b4882a4067a807e \
-    --hash=sha256:e0a968b5ba15f8a328fdfd7ab1fcb5af4470c28aaf7e55df02a99bc13138e6e8
+
 iniconfig==2.0.0; python_version >= "3.7"
 packaging==23.1; python_version >= "3.7"
 pluggy==1.0.0; python_version >= "3.6" \
-    --hash=sha256:74134bbf457f031a36d68416e1509f34bd5ccc019f0bcc952c7b909d06b37bd3 \
-    --hash=sha256:4224373bacce55f955a878bf9cfa763c1e360858e330072059e10bad68531159
+
 py==1.11.0; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version >= "3.6" \
-    --hash=sha256:607c53218732647dff4acdfcd50cb62615cedf612e72d1724fb1a0cc6405b378 \
-    --hash=sha256:51c75c4126074b472f746a24399ad32f6053d1b34b68d2fa41e558e6f4a98719
+
 pytest-django==4.5.2; python_version >= "3.5"
 pytest==6.2.5; python_version >= "3.6" \
-    --hash=sha256:7310f8d27bc79ced999e760ca304d69f6ba6c6649c0b60fb0e04a4a77cacc134 \
-    --hash=sha256:131b36680866a76e6781d13f101efb86cf674ebb9762eb70d3082b6f29889e89
+
 python-dotenv==0.19.2; python_version >= "3.5" \
-    --hash=sha256:a5de49a31e953b45ff2d2fd434bbc2670e8db5273606c1e737cc6b93eff3655f \
-    --hash=sha256:32b2bdc1873fd3a3c346da1c6db83d0053c3c62f28f1f38516070c4c8971b1d3
+
 soupsieve==2.4.1; python_full_version >= "3.6.0" and python_version >= "3.7"
 sqlparse==0.4.4; python_version >= "3.8"
 toml==0.10.2; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.3.0" and python_version >= "3.6" \
-    --hash=sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b \
-    --hash=sha256:b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f
+
 typing-extensions==4.6.3; python_version < "3.11" and python_version >= "3.8"
 tzdata==2023.3; sys_platform == "win32" and python_version >= "3.8"

@@ -30,24 +30,43 @@ FEATURES:
 
 ## Quick Start Guide
 
-Clone the project: `$ git clone git@github.com:kat-git-hub/DjangoTaskManager.git`
+Local installation:
 
-Navigate to the cloned directory: `$ cd DjangoTaskManager`
+1. Clone the project: `$ git clone git@github.com:kat-git-hub/DjangoTaskManager.git`
 
-Create a virtual environment using Poetry: `$ poetry install`
+2. Navigate to the cloned directory: `$ cd DjangoTaskManager`
 
-To activate the virtual environment, use the following command: `$ poetry shell`
+3. Create a virtual environment using Poetry: `$ poetry install`
 
-Install dependencies with: `$ pip install -r requirements.txt`
+4. To activate the virtual environment, use the following command: `$ poetry shell`
 
-Open the `.env` file in root directory and add the following line: `SECRET_KEY=your_secret_key_value`
+5. Install dependencies with: `$ pip install -r requirements.txt`
 
-Create the database: `$ poetry run python manage.py migrate`
+6. Open the `.env` file in root directory and add the following line: `SECRET_KEY=your_secret_key_value`
+
+7. Create the database: `$ poetry run python manage.py migrate`
 You should run first the `makemigrations` task if changes in the models were made.
 
-To run the local server: `$ poetry run python manage.py runserver`
+8. To run the local server: `$ poetry run python manage.py runserver`
 
-Access the application: `http://localhost:8000/`
+9. Access the application: `http://localhost:8000/`
+
+### Docker
+
+To run the project using Docker, you can follow these steps:
+
+1. Make sure you have Docker installed on your system. You can download and install Docker from the official website: https://www.docker.com/get-started
+
+2. Clone the project: `$ git clone git@github.com:kat-git-hub/DjangoTaskManager.git`
+
+3. Navigate to the cloned directory: `$ cd DjangoTaskManager`
+
+4. Build the Docker image: `$ docker-compose build`
+
+5. Run the Docker container: `$ docker-compose up`
+
+6. Access the application in your browser: `http://localhost:8000/`
+
 
 
 ### Have fun! :tada:
