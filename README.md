@@ -22,7 +22,7 @@ FEATURES:
 
 - Python 3.8+ (Python3 and above)
 
-- Django and other dependencies declared in the `requirements.txt` file
+- Django and other dependencies declared in the `pyproject.toml` file
 
 - [Poetry](https://python-poetry.org/docs/#installation)
 
@@ -40,7 +40,7 @@ Local installation:
 
 4. To activate the virtual environment, use the following command: `$ poetry shell`
 
-5. Install dependencies with: `$ pip install -r requirements.txt`
+5. Install dependencies
 
 6. Open the `.env` file in root directory and add the following line: `SECRET_KEY=your_secret_key_value`
 
